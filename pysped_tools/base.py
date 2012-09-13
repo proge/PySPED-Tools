@@ -42,8 +42,7 @@
 from __future__ import division, print_function, unicode_literals
 
 from lxml import etree
-from StringIO import StringIO
-from datetime import datetime, date, time, tzinfo
+from datetime import datetime, date, time
 from decimal import Decimal
 import locale
 import unicodedata
@@ -176,13 +175,13 @@ class ErroObrigatorio(Exception):
 class TamanhoInvalido(Exception):
     def __init__(self, codigo, nome, valor, tam_min=None, tam_max=None, dec_min=None, dec_max=None):
         if tam_min:
-           self.value = 'O campo código ' + codigo + ', "' + nome + '", deve ter o tamanho mínimo de ' + unicode(tam_min) + ', mas o tamanho enviado foi ' + unicode(len(unicode(valor))) + ': ' + unicode(valor)
+            self.value = 'O campo código ' + codigo + ', "' + nome + '", deve ter o tamanho mínimo de ' + unicode(tam_min) + ', mas o tamanho enviado foi ' + unicode(len(unicode(valor))) + ': ' + unicode(valor)
         elif tam_max:
-           self.value = 'O campo código ' + codigo + ', "' + nome + '", deve ter o tamanho máximo de ' + unicode(tam_max) + ', mas o tamanho enviado foi ' + unicode(len(unicode(valor))) + ': ' + unicode(valor)
+            self.value = 'O campo código ' + codigo + ', "' + nome + '", deve ter o tamanho máximo de ' + unicode(tam_max) + ', mas o tamanho enviado foi ' + unicode(len(unicode(valor))) + ': ' + unicode(valor)
         elif dec_min:
-           self.value = 'O campo código ' + codigo + ', "' + nome + '", deve ter o mínimo de ' + unicode(dec_min) + ' casas decimais, mas o enviado foi ' + unicode(len(unicode(valor))) + ': ' + unicode(valor)
+            self.value = 'O campo código ' + codigo + ', "' + nome + '", deve ter o mínimo de ' + unicode(dec_min) + ' casas decimais, mas o enviado foi ' + unicode(len(unicode(valor))) + ': ' + unicode(valor)
         elif dec_max:
-           self.value = 'O campo código ' + codigo + ', "' + nome + '", deve ter o máximo de ' + unicode(dec_max) + ' casas decimais, mas o enviado foi ' + unicode(len(unicode(valor))) + ': ' + unicode(valor)
+            self.value = 'O campo código ' + codigo + ', "' + nome + '", deve ter o máximo de ' + unicode(dec_max) + ' casas decimais, mas o enviado foi ' + unicode(len(unicode(valor))) + ': ' + unicode(valor)
 
     def __str__(self):
         return repr(self.value)

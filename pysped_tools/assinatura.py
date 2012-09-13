@@ -41,7 +41,7 @@
 
 from __future__ import division, print_function, unicode_literals
 
-from pysped_tools import XMLNFe, NAMESPACE_SIG, ABERTURA, tira_abertura
+from pysped_tools import XMLNFe
 import os
 
 
