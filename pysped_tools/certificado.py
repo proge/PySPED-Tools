@@ -62,15 +62,15 @@ DIRNAME = os.path.dirname(__file__)
 
 class Certificado(object):
     def __init__(self):
-        self.arquivo     = ''
-        self.senha       = ''
-        self.chave       = ''
+        self.arquivo = ''
+        self.senha = ''
+        self.chave = ''
         self.certificado = ''
-        self._emissor     = {}
+        self._emissor = {}
         self._proprietario = {}
         self._data_inicio_validade = None
-        self._data_fim_validade    = None
-        self._doc_xml    = None
+        self._data_fim_validade = None
+        self._doc_xml = None
 
     def prepara_certificado_arquivo_pfx(self):
         # Lendo o arquivo pfx no formato pkcs12 como binário
@@ -96,7 +96,7 @@ class Certificado(object):
 
         linhas_certificado = ['-----BEGIN CERTIFICATE-----\n']
         for i in range(0, len(cert_txt), 64):
-            linhas_certificado.append(cert_txt[i:i+64] + '\n')
+            linhas_certificado.append(cert_txt[i:i + 64] + '\n')
         linhas_certificado.append('-----END CERTIFICATE-----\n')
 
         self.certificado = ''.join(linhas_certificado)
@@ -106,7 +106,7 @@ class Certificado(object):
         self._emissor = dict(cert_openssl.get_issuer().get_components())
         self._proprietario = dict(cert_openssl.get_subject().get_components())
         self._data_inicio_validade = datetime.strptime(cert_openssl.get_notBefore(), '%Y%m%d%H%M%SZ')
-        self._data_fim_validade    = datetime.strptime(cert_openssl.get_notAfter(), '%Y%m%d%H%M%SZ')
+        self._data_fim_validade = datetime.strptime(cert_openssl.get_notAfter(), '%Y%m%d%H%M%SZ')
 
     def _set_chave(self, chave):
         self._chave = chave
@@ -152,13 +152,13 @@ class Certificado(object):
             # nome do proprietário
             #
             if ':' in self.proprietario['CN']:
-                return self.proprietario['CN'].rsplit(':',1)[0]
+                return self.proprietario['CN'].rsplit(':', 1)[0]
             else:
                 return self.proprietario['CN']
         else: # chave CN ainda não disponível
             try:
                 self.prepara_certificado_arquivo_pfx()
-                return self.proprietario['CN'].rsplit(':',1)[0]
+                return self.proprietario['CN'].rsplit(':', 1)[0]
             except IOError:  # arquivo do certificado não disponível
                 return ''
 
@@ -170,13 +170,13 @@ class Certificado(object):
             # nome do proprietário
             #
             if ':' in self.proprietario['CN']:
-                return self.proprietario['CN'].rsplit(':',1)[1]
+                return self.proprietario['CN'].rsplit(':', 1)[1]
             else:
                 return ''
         else: #chave CN ainda não disponível
             try:
                 self.prepara_certificado_arquivo_pfx()
-                return self.proprietario['CN'].rsplit(':',1)[1]
+                return self.proprietario['CN'].rsplit(':', 1)[1]
             except IOError:  # arquivo do certificado não disponível
                 return ''
 
@@ -389,7 +389,7 @@ class Certificado(object):
         xpath = doc_xml.xpathNewContext()
         xpath.xpathRegisterNs('sig', NAMESPACE_SIG)
         certificados = xpath.xpathEval('//sig:X509Data/sig:X509Certificate')
-        for i in range(len(certificados)-1):
+        for i in range(len(certificados) - 1):
             certificados[i].unlinkNode()
             certificados[i].freeNode()
 

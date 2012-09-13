@@ -138,7 +138,7 @@ class NohXML(object):
         nohs = self._le_nohs(tag, ns)
 
         if (nohs is not None) and (len(nohs) >= ocorrencia):
-            return nohs[ocorrencia-1]
+            return nohs[ocorrencia - 1]
         else:
             return None
 
@@ -340,7 +340,6 @@ class TagBoolean(TagCaracter):
         if kwargs.has_key('valor'):
             self.valor = kwargs['valor']
 
-
     def _testa_obrigatorio(self, valor):
         # No caso da tag booleana, False deve ser tratado como preenchido
         if self.obrigatorio and (valor is None):
@@ -448,6 +447,7 @@ class TagData(TagCaracter):
             return ''
         else:
             return self._valor_data.strftime('%d/%m/%Y')
+
 
 class TagHora(TagData):
     def set_valor(self, novo_valor):
@@ -741,7 +741,6 @@ class TagDecimal(TagCaracter):
 
         return self.alertas == []
 
-
     def set_valor(self, novo_valor):
         if isinstance(novo_valor, basestring):
             if novo_valor:
@@ -838,6 +837,7 @@ def tirar_acentos(texto):
 
     return texto
 
+
 def por_acentos(texto):
     if not texto:
         return texto
@@ -855,6 +855,7 @@ def por_acentos(texto):
     texto = texto.replace('&AMP;', '&')
 
     return texto
+
 
 def tira_abertura(texto):
     #aberturas = (
@@ -896,6 +897,7 @@ def tira_abertura(texto):
 
     return texto
 
+
 def _tipo_para_string(valor, tipo, obrigatorio, dec_min):
     if (not obrigatorio) and (not valor):
         return '', ''
@@ -927,6 +929,7 @@ def _tipo_para_string(valor, tipo, obrigatorio, dec_min):
 
     return valor, decimais
 
+
 def _string_para_tipo(valor, tipo):
     if valor == None:
         return valor
@@ -942,6 +945,7 @@ def _string_para_tipo(valor, tipo):
 
     return valor
 
+
 def formata_datahora(valor, tipo):
     if (tipo == 'd') and isinstance(valor, (datetime, date,)):
         valor = '%04d-%02d-%02d' % (valor.year, valor.month, valor.day)
@@ -953,6 +957,7 @@ def formata_datahora(valor, tipo):
 
     return valor
 
+
 def somente_ascii(funcao):
     '''
     Usado como decorator para a nota fiscal eletrônica de servicos
@@ -961,4 +966,3 @@ def somente_ascii(funcao):
         return unicodedata.normalize(b'NFKD', funcao(*args, **kwargs)).encode('ascii', 'ignore')
 
     return converter_para_ascii_puro
-
