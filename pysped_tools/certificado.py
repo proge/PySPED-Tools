@@ -49,7 +49,7 @@ try:
 except ImportError:
     pass
 
-from pysped_tools import XMLNFe, NAMESPACE_SIG, ABERTURA, tira_abertura
+from . import XMLNFe, NAMESPACE_SIG, ABERTURA, tira_abertura
 import libxml2
 import os
 from datetime import datetime
