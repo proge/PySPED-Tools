@@ -3,7 +3,10 @@ from distutils.core import setup
 setup(
     name = "PySPED-Tools",
     packages = ["pysped_tools"],
-    package_data = {'pysped_tools': ['cadeia-certificadora/*', 'schema/*']},
+    package_data = {
+        'pysped_tools': ['cadeia-certificadora/*.*',
+                         'cadeia-certificadora/certificados/*', 'schema/*'],
+        },
     version = "0.0.1",
     description = "Common library for SPED specifications",
     author = "Daniel Hartmann",
