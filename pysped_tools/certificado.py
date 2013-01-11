@@ -289,6 +289,16 @@ class Certificado(object):
         elif 'CancelarNfseEnvio' in xml:
             doctype = '<!DOCTYPE CancelarNfseEnvio>'
 
+        #
+        # XML da NFS-e de São Paulo
+        #
+        elif 'EnvioLoteRPS' in xml:
+            doctype = '<!DOCTYPE EnvioLoteRPS>'
+        elif 'ConsultaNFe' in xml:
+            doctype = '<!DOCTYPE ConsultaNFe>'
+        elif 'CancelamentoNFe' in xml:
+            doctype = '<!DOCTYPE CancelamentoNFe>'
+
         else:
             raise ValueError('Tipo de arquivo desconhecido para assinatura/validacao')
 
