@@ -14,6 +14,7 @@ setup(
     url = "https://github.com/proge/PySPED-Tools",
     download_url = "https://nodeload.github.com/proge/PySPED-Tools/tarball/v0.0.1",
     keywords = ["sped", "brazil", "brasil"],
+    install_requires=['PyOpenSSL', 'geraldo'],
     classifiers = [
         "Programming Language :: Python",
         "Development Status :: 4 - Beta",
@@ -34,3 +35,4 @@ This module implements
  - Certificate manipulation
 """
 )
+
