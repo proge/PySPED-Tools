@@ -66,6 +66,7 @@ class Certificado(object):
         self.senha = ''
         self.chave = ''
         self.certificado = ''
+        self.certificado_txt = ''
         self._emissor = {}
         self._proprietario = {}
         self._data_inicio_validade = None
@@ -93,6 +94,7 @@ class Certificado(object):
         cert_txt = cert_txt.replace('\n', '')
         cert_txt = cert_txt.replace('-----BEGIN CERTIFICATE-----', '')
         cert_txt = cert_txt.replace('-----END CERTIFICATE-----', '')
+        self.certificado_txt = cert_txt
 
         linhas_certificado = ['-----BEGIN CERTIFICATE-----\n']
         for i in range(0, len(cert_txt), 64):
