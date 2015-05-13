@@ -6,6 +6,6 @@ Code refactoring and segmentation from Aristides Caldeira's [PySPED](https://git
 Setup
 -----
 
-pip install pyOpenSSL==0.12
+pip install pyOpenSSL==0.14
 
 python setup.py install
